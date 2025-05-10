@@ -2,15 +2,15 @@
 
 learning and understanding MVC in node.js.
 
-#what is MVC?
+# what is MVC?
     MVC stands for Model View Controller. It's a software design pattern that separates the representation of information from the user's interaction with it.
 
-#Fetures of MVC
+# Fetures of MVC
     Offer full controll over HTML and URLs making it easy to design web appliction architecture.
     Easy to test, maintain and reuse code.
     Easy to learn and understand.
 
-#Components Of MVC.
+# Components Of MVC.
     -Model
     -View
     -Controller.
@@ -73,4 +73,28 @@ learning and understanding MVC in node.js.
         cost implications.
         legal and compliance considerations.
         cultural differences.
+
+# What is node.js all about
+    -node js is a javascript runtime environment : this is becouse it executes outside the browswer
+    -node js is used to build fast and scalable network applications.
+    -node js uses event-driven non-blocking I/O model which makes it lightweight and efficient.
+    -node js is platform independent.
+    -node js is an open-source server environment.
+    -node js is cross-platform.
+    -node js runs on various platforms(linux,windows etc)
+    -node js uses javascript on the server side : this means that you can write server     logic in javascript.
+    -node js is built on chrome v8 engine.
+    -node js is single threaded but highly scalable.
+    -mode js is asynchronous : this means that multiple client request can be handled at the same time without blocking each other.
+    -node js is event driven : this means that node js will not wait for an api to return data.it executes the next piece of code while waiting for the api call to return
        
+# Why learn node.js
+    -Fast
+    -it's real time
+    -lightweight
+    -easy to use
+    -open source
+    -free
+    -scalable
+
+
