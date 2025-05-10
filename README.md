@@ -98,3 +98,18 @@ learning and understanding MVC in node.js.
     -scalable
 
 
+# NPM (Node package Maneger)
+    -it proveides ways to find,install, update, manage, publish, and remove node.jjs pakages
+
+    # Global and local pakages
+        -pakages con be install global such that it can be accesed anytime a developrer needs it.   for example npm i nodemon --global
+        -or they can be installed locally so that they can only be accessed within the project you are working with. for example npm i express --save
+
+    # projects initialization
+        -to initialize a projects in node js run the command npm init -
+        -A package.json file would be created and it contains metadata(Data that provides info about other data).this includes name,version,description,author,license and dependencies(what packages we need to run our project) about our project.
+
+    # installing pakaeges
+        -To install development dependency , run npm install pakage name ==>  npm install express mongodb
+
+        -To install as a pacakge as a development dependency add --save-dev  ==>  npm install browser-sync --save-dev
