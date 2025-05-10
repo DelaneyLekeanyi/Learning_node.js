@@ -113,3 +113,23 @@ learning and understanding MVC in node.js.
         -To install development dependency , run npm install pakage name ==>  npm install express mongodb
 
         -To install as a pacakge as a development dependency add --save-dev  ==>  npm install browser-sync --save-dev
+
+
+# Node js Modules
+    -A set of functions you want to include in your application
+    -This module could be build in or self created.
+
+    # Build-in modules
+        -http 
+        -fs
+        -path
+        -os
+        -events
+        -util
+
+       - To include a module use these modules we have to require them first using the require() function.
+        -for example var http = require('http);
+
+        -To include a custom module just create a new .js file and save it in the same folder where your main program resides.
+        -then require it using the require() function.
+        
