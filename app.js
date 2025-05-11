@@ -1,10 +1,20 @@
 // includeing annd http module
 const http = require('http');
 var dt = require('./custom');
-
 //including a fs module
 const fs = require('fs');
 
+//events
+const EventEmitter = require('events');
+const emitter = new EventEmitter();
+
+//register an event
+emitter.on('messageLogged', function(){
+    console.log('I am glad you are here');
+});
+
+//raise an event
+emitter.emit('messageLogged');
 
 //creating a new file
 fs.writeFile('index.html', '<h1>Hello World</h1>', (err) => {

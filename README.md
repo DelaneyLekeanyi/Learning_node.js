@@ -149,3 +149,9 @@ learning and understanding MVC in node.js.
      ii-Read existing files
      iii-update existing files fs.rename, fs.unlink, fs.appendFile, fs.writeFile
      iv-delete existing files fs.unlink
+
+# events
+    -Events are actions that happen in our application which we can respond to.
+    -EventEmitter class is used to create and handle custom events.
+    -we can create an instance of EventEmitter class and then register event listeners using the on() method.
+    -when an event occurs, the registered listener functions are called automatically.
