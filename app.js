@@ -10,7 +10,9 @@ const server = http.createServer((req, res) => {
     res.writeHead(200, { 'Content-Type': 'text/html' });
     // sending the response
     
-    res.end(`<h1>Hello World</h1><p>The date and time are currently: ${dt.custom()}</p>`);
+    res.write(`<h1>Hello World</h1><p>The date and time are currently: ${dt.custom()}</p>`);
+    res.write(req.url);
+    res.end()
 });
 
 // server listening on port 3000
