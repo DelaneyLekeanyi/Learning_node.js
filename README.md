@@ -133,7 +133,7 @@ learning and understanding MVC in node.js.
         -To include a custom module just create a new .js file and save it in the same folder where your main program resides.
         -then require it using the require() function.
 
-    # HTTP module
+# HTTP module
         -const server = http.createServer((req, res) => { });
             the above line is used in creating a server wich takes a call back (req, res) as an arguiment thsi his handel in comming responds and request.
         
@@ -141,3 +141,11 @@ learning and understanding MVC in node.js.
 
         -the res.writehead  sets the HTTP response header. It specifies a status code of 200, which means "OK", and sets the Content-Type to text/html, indicating that the response will be in HTML format.
         Line 12: res.write(Hello WorldThe date and time are currently: ${dt.custom()});
+
+# fs - File system
+    -This module allows us to work with files on our computer
+    -With this we can
+     i-create new files fs.readfile, fs.appendFile, fs.open, fs.writeFile.
+     ii-Read existing files
+     iii-update existing files fs.rename, fs.unlink, fs.appendFile, fs.writeFile
+     iv-delete existing files fs.unlink
