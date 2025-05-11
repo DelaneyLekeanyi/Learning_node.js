@@ -1,47 +1,120 @@
-// includeing annd http module
-const http = require('http');
-var dt = require('./custom');
-//including a fs module
-const fs = require('fs');
+import { fileURLToPath } from 'url';
+import { dirname } from 'path';
 
-//events
-const EventEmitter = require('events');
-const emitter = new EventEmitter();
+// Define __filename and __dirname
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
 
-//register an event
-emitter.on('messageLogged', function(){
-    console.log('I am glad you are here');
-});
 
-//raise an event
-emitter.emit('messageLogged');
+import http from 'http';
+import path from 'path';
+import fs from 'fs';
+import Person from './person.js';
 
-//creating a new file
-fs.writeFile('index.html', '<h1>Hello World</h1>', (err) => {
-    if (err) throw err;
-    console.log('File created successfully');
-});
 
-//deliting a file
-fs.unlink('index.html', (err) => {
-    if (err) throw err;
-    console.log('File deleted successfully');
-});
-// creating a server
+const PORT = process.env.PORT || 3002;
+
+// Create a person instance
+const person = new Person(
+    'John',
+    'Doe',
+    28,
+    [
+        'BSc in Computer Science, University of Technology (2015-2019)',
+        'MSc in Web Development, Digital University (2019-2021)'
+    ],
+    [
+        'JavaScript (Node.js, React, Vue)',
+        'HTML5 & CSS3',
+        'Python',
+        'Database Management (SQL, MongoDB)',
+        'Git & Version Control'
+    ],
+    [
+        'Senior Web Developer at Tech Solutions Inc. (2021-Present)',
+        'Junior Developer at Digital Creations (2019-2021)',
+        'Web Development Intern at StartUp Hub (2018-2019)'
+    ]
+);
+
 const server = http.createServer((req, res) => {
-    // checking the request url and sending response accordingly reading the file
-   fs.readFile('index.html', (err, data) => {
-        if (err) {
-            res.writeHead(404, { 'Content-Type': 'text/html' });
-            res.write("<h1>404 Not Found</h1>");
-            return res.end();
-        }
-        res.writeHead(200, { 'Content-Type': 'text/html' });
-        res.write(data);
-        res.end();
-    }); 
+    // Handle CSS file requests
+    if (req.url === '/styles.css') {
+        fs.readFile(
+            path.join(__dirname, 'public', 'style.css'),
+            (err, content) => {
+                if(err) throw err;
+                res.writeHead(200, {'Content-Type': 'text/css'});
+                res.end(content);
+            }
+        );
+        return;
+    }
+
+    // Handle page requests
+    if (req.url === '/'){
+        fs.readFile(
+            path.join(__dirname, 'public', 'index.html'),
+            (err, content) => {
+                if(err) throw err;
+                res.writeHead(200, {'Content-Type': 'text/html'});
+                res.end(content);
+            }
+        );
+    }
+    else if (req.url === '/about'){
+        fs.readFile(
+            path.join(__dirname, 'public', 'about.html'),
+            (err, content) => {
+                if(err) throw err;
+                res.writeHead(200, {'Content-Type': 'text/html'});
+                res.end(content);
+            }
+        );
+    }
+    else if (req.url === '/cv'){
+        fs.readFile(
+            path.join(__dirname, 'public', 'cv.html'),
+            (err, content) => {
+                if(err) throw err;
+                
+                // Convert content to string
+                let htmlContent = content.toString();
+                
+                // Replace the placeholder with person data using toString method
+                htmlContent = htmlContent.replace(
+                    '<div id="person-data">',
+                    '<div id="person-data">' + person.toString()
+                );
+                
+                res.writeHead(200, {'Content-Type': 'text/html'});
+                res.end(htmlContent);
+            }
+        );
+    }
+    else if (req.url === '/api/users'){
+        const users = [
+            {name: 'John', age: 30},
+            {name: 'Jane', age: 25}
+        ];
+        res.writeHead(200, {'Content-Type': 'application/json'});
+        res.end(JSON.stringify(users));
+    }
+    else {
+        // Handle 404
+        res.writeHead(404, {'Content-Type': 'text/html'});
+        res.end('<h1>404 Not Found</h1>');
+    }
 });
-// server listening on port 3000
-server.listen(3000, () => {
-    console.log('Server is running at http://localhost:3000/');     
+
+server.listen(PORT, (err) => {
+    if (err) {
+        console.error("Error starting server:", err);
+        return;
+    }
+    console.log(`Server is running on port ${PORT}`);
+    console.log(`Visit http://localhost:${PORT} to view the website`);
 });
+
+
+
