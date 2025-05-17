@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sign Up</title>
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/auth.css">
+</head>
+<body>
+  <!-- Navbar -->
+  <nav class="navbar">
+  <a href="#" class="logo">MySite</a>
+  <ul class="nav-center">
+    <li><a href="/">Home</a></li>
+    <li><a href="about">About</a></li>
+    <li><a href="cv">CV</a></li>
+  </ul>
+  <div class="nav-right">
+    <button class="btn" onclick="location.href='signup'">Sign Up</button>
+    <button class="btn" onclick="location.href='signin'">Sign In</button>
+  </div>
+</nav>
+
+  <!-- Main content -->
+  <main>
+    <div class="auth-container">
+      <div class="auth-form">
+        <h2>Create an Account</h2>
+        <form id="signup-form">
+          <div class="form-group">
+            <label for="fullname">Full Name</label>
+            <input type="text" id="fullname" name="fullname" required>
+          </div>
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" required>
+          </div>
+          <div class="form-group">
+            <label for="password">Password</label>
+            <input type="password" id="password" name="password" required>
+          </div>
+          <div class="form-group">
+            <label for="confirm-password">Confirm Password</label>
+            <input type="password" id="confirm-password" name="confirm-password" required>
+          </div>
+          <button type="submit" class="auth-btn">Sign Up</button>
+        </form>
+        <div class="auth-footer">
+          <p>Already have an account? <a href="signin">Sign In</a></p>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer id="footer">
+    <p>&copy; 2023 MySite. All rights reserved.</p>
+  </footer>
+
+  <script>
+    document.getElementById('signup-form').addEventListener('submit', function(e) {
+      e.preventDefault();
+      
+      // Get form values
+      const fullname = document.getElementById('fullname').value;
+      const email = document.getElementById('email').value;
+      const password = document.getElementById('password').value;
+      const confirmPassword = document.getElementById('confirm-password').value;
+      
+      // Basic validation
+      if (password !== confirmPassword) {
+        alert('Passwords do not match!');
+        return;
+      }
+      
+      // Here you would typically send the data to your server
+      console.log('Sign up form submitted:', { fullname, email, password });
+      
+      // For demo purposes, show success message
+      alert('Account created successfully! You can now sign in.');
+      window.location.href = 'signin';
+    });
+  </script>
+</body>
+</html>
